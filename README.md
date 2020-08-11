@@ -1,6 +1,26 @@
-# Express API Starter
+# Express Inventory App
 
-Includes API Server utilities:
+## Database Structure
+
+**Entities in the Database:**
+
+- [ ] Item Type
+- [ ] Item
+- [ ] Warranty
+- [ ] Manufacturer
+- [ ] Item Location
+- [ ] Item Purchase Location
+
+**Entities to seed:**
+
+- [ ] Countries
+- [ ] US States
+- [ ] Item Types
+- [ ] Location
+
+## Dependencies
+
+**Includes API Server utilities:**
 
 - [morgan](https://www.npmjs.com/package/morgan)
   - HTTP request logger middleware for node.js
@@ -11,7 +31,7 @@ Includes API Server utilities:
 - [docker](https://www.docker.com/get-started)
   - Docker is a tool designed to make it easier to create, deploy, and run applications by using containers.
 
-Development utilities:
+**Development utilities:**
 
 - [nodemon](https://www.npmjs.com/package/nodemon)
   - nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
