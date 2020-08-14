@@ -5,6 +5,7 @@ const cors = require('cors');
 
 require('dotenv').config();
 
+const { message } = require('./constants/project');
 const middlewares = require('./middlewares');
 const api = require('./api');
 
@@ -17,7 +18,7 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.json({
-    message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
+    message,
   });
 });
 

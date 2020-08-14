@@ -20,6 +20,7 @@ module.exports = {
           'newlines-between': 'always',
         },
       ],
+      'camelcase': 0,
     },
   }
   
