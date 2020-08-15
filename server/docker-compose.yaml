@@ -1,15 +1,29 @@
 version: "3.1"
 services:
   # app:
-  #   build: .
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   image: nodejs
+  #   container_name: nodejs
   #   depends_on:
   #     - db
+  #   env_file: .env
+  #   # environment:
+  #   #   DATABASE_URL: postgres://admin:admin@postgres:5432/inventory-app
+  #   #   NODE_ENV: development
+  #   environment:
+  #     NODE_ENV: development
+  #     DATABASE_URL: postgresql://admin:admin@db:5432/inventory-app
+  #     DATABASE_URL_TEST: postgresql://admin:admin@db:5432/inventory-app-test
   #   ports:
   #     - "5050:5050"
-  #   command: yarn dev
   #   volumes:
   #     - .:/app/
   #     - /app/node_modules
+  #   networks:
+  #     - app-network
+  #   command: yarn dev
   db:
     image: postgres
     restart: always
@@ -28,5 +42,10 @@ services:
     restart: always
     ports:
       - 8070:8080
+# networks:
+#   app-network:
+#     driver: bridge
+
 volumes:
   database:
+  # node_modules:
