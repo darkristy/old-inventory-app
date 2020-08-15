@@ -1,6 +1,7 @@
 const { Model } = require('objection');
 
 const tableNames = require('../../constants/tableNames');
+
 const schema = require('./address.schema.json');
 
 class Address extends Model {

@@ -5,14 +5,10 @@ const Company = require('./companies.model');
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
-  try {
-    const companies = await Company
-      .query()
-      .where('deleted_at', null);
-    res.json(companies);
-  } catch (error) {
-    next(error);
-  }
+  await Company.query()
+    .where('deleted_at', null)
+    .then(result => res.json(result))
+    .catch(error => next(error));
 });
 
 module.exports = router;

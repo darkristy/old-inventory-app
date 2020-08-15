@@ -7,7 +7,7 @@ const middlewares = require('./middlewares');
 const api = require('./api');
 const project = require('./constants/project');
 
-require('./db')
+require('./db');
 
 const app = express();
 
