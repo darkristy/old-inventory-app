@@ -33,7 +33,6 @@ exports.up = async (knex) => {
 
   await knex.schema.createTable(tableNames.item, (table) => {
     table.increments();
-    references(table, tableNames.user);
     table.string('name');
     references(table, tableNames.item_type);
     table.text('description');
@@ -46,7 +45,6 @@ exports.up = async (knex) => {
 
   await knex.schema.createTable(tableNames.item_info, (table) => {
     table.increments();
-    references(table, tableNames.user);
     references(table, tableNames.item);
     table.dateTime('purchase_date').notNullable();
     table.dateTime('expiration_date');
