@@ -12,22 +12,24 @@ const {
 /**
  * @param {Knex} knex
  */
-exports.up = async (knex) => {
+exports.up = async knex => {
   await Promise.all([
     createNameTable(knex, tableNames.item_type),
     createNameTable(knex, tableNames.country),
     createNameTable(knex, tableNames.state),
-    createNameTable(knex, tableNames.shape),
-    knex.schema.createTable(tableNames.inventory_location, (table) => {
+    knex.schema.createTable(tableNames.inventory_location, table => {
       table.increments().notNullable();
-      table.string('name').notNullable().unique();
+      table
+        .string('name')
+        .notNullable()
+        .unique();
       table.string('description', 1000);
       url(table, 'image_url');
       addDefaultColumns(table);
     }),
   ]);
 
-  await knex.schema.createTable(tableNames.address, (table) => {
+  await knex.schema.createTable(tableNames.address, table => {
     table.increments().notNullable();
     table.string('street_address_1', 50).notNullable();
     table.string('street_address_2', 50);
@@ -48,7 +50,7 @@ exports.up = async (knex) => {
     ]);
   });
 
-  await knex.schema.createTable(tableNames.company, (table) => {
+  await knex.schema.createTable(tableNames.company, table => {
     table.increments().notNullable();
     table.string('name').notNullable();
     url(table, 'logo_url');
@@ -61,14 +63,15 @@ exports.up = async (knex) => {
   });
 };
 
-exports.down = async (knex) => {
-  await Promise.all([
-    tableNames.company,
-    tableNames.address,
-    tableNames.item_type,
-    tableNames.country,
-    tableNames.state,
-    tableNames.shape,
-    tableNames.inventory_location,
-  ].map((tableName) => knex.schema.dropTableIfExists(tableName)));
+exports.down = async knex => {
+  await Promise.all(
+    [
+      tableNames.company,
+      tableNames.address,
+      tableNames.item_type,
+      tableNames.country,
+      tableNames.state,
+      tableNames.inventory_location,
+    ].map(tableName => knex.schema.dropTableIfExists(tableName))
+  );
 };
